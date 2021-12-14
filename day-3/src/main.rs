@@ -29,7 +29,7 @@ fn main() {
     });
 
     fn get_value<F: Fn(u32, u32) -> bool>(
-        value_list: Vec<Vec<u32>>,
+        value_list: &Vec<Vec<u32>>,
         most_common: [u32; 12],
         f: F,
     ) -> u32 {
@@ -51,8 +51,8 @@ fn main() {
         .expect("Oh no")
     }
 
-    let oxygen = get_value(data.clone(), most_common, |a: u32, b: u32| a == b);
-    let carbon = get_value(data.clone(), most_common, |a: u32, b: u32| a != b);
+    let oxygen = get_value(&data, most_common, |a: u32, b: u32| a == b);
+    let carbon = get_value(&data, most_common, |a: u32, b: u32| a != b);
 
     println!("Carbon: {}", oxygen);
     println!("Oxygen: {}", carbon);
